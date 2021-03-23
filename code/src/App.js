@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 
 import { API_URL } from 'utils/urls'
+import { Form } from 'Components/Form'
 
 export const App = () => {
   const [messageList, setMessageList] = useState([])
   const [messageNew, setMessageNew] = useState('')
+  const [likes, setLikes] = useState('')
 
   useEffect(() => {
     fetchMessageList()
@@ -39,21 +41,28 @@ export const App = () => {
       .catch(err => console.error(err))
   }
 
+  // const onHeartClick = (event, id) => {
+  //   event.preventDefault()
+  //   fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }})
+  //   .then(res => res.json())
+  //   .then(clickedLike => setLikes([...likes, clickedLike]))
+  //   }
+
   return (
     <div>
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="newMessage">Write new message!</label>
-        <input
-          id="newMessage"
-          type="text"
-          value={messageNew}
-          onChange={onMessageNewChange}
-        />
-        <button type="submit">Send message!</button>
-      </form>
+      <Form 
+        onSubmit={onFormSubmit}
+        onChange={onMessageNewChange}
+      />
       {messageList.map(message => (
-        <div key={message._id}>
-          <h4>{message.message}</h4>
+        <div className="messages-container" key={message._id}>
+          <p className="message-text-area">{message.message}</p>
+          <button onClick={onHeartClick} type="submit" className="like-button">❤️</button>
+          <p className="likes">x {(message.hearts)}</p>
           <p className="date">- {moment(message.createdAt).fromNow()}</p>
         </div>
       ))}

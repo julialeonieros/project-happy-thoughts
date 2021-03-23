@@ -5,22 +5,22 @@ export const Form = props => {
 
   return (
     <div className="form-container">
+    <h1>What's making you happy right now?</h1>
       <form onSubmit={onSubmit}>
-        <label htmlFor="newMessage">Write new message! </label>
+        <label htmlFor="newMessage"></label>
         <input 
+          className="form-text-area"
           id="newMessage"
           type="text"
+          // maxLength="140"
           value={messageNew}
           onChange={onChange}
         />
-        <button type="submit">Send message!</button>
+        <button type="submit" className="form-button">❤️ <span className="button-text">Send happy thought!</span> ❤️</button>
       </form>
     </div>
   )
 }
 
 
-      {/* <Form 
-        onSubmit={onFormSubmit}
-        onChange={onMessageNewChange}
-      /> */}
+

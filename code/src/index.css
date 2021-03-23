@@ -1,13 +1,17 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   background-color: #FFF;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
-  /* font-family: Source Code Prop;
-  font-weight: 400; */
+    sans-serif;
+  font-family: Menlo;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,19 +21,82 @@ code {
     monospace;
 }
 
-/* .main {
+h1 {
+  font-size: 13.5px;
+  font-weight: 400;
+}
+
+.likes,
+.date {
+  display: inline-block;
+  color: darkgrey;
+  font-size: 12px;
+  margin-left: 7px;
+}
+
+.date {
+  float: right;
+}
+
+.main {
   border: solid purple 2px;
   margin-top: 40px;
 }
 
-.messages-container,
-.form-container{
+.form-container,
+.messages-container {
   width: 400px;
-  height: 175px;
   margin: 30px auto;
+  padding: 12px 17px;
   border: solid black 1px;
 }
 
-.test-div {
-  background-color: blueviolet;
-} */
+.form-container {
+  height: 180px;
+  background-color: #F2F0F0;
+}
+
+.form-text-area {
+  width: 100%;
+  height: 55px;
+  border: solid darkgray 1px;
+  font-family: Menlo;
+}
+
+.messages-container {
+  height: 150px;
+}
+
+.message-text-area {
+  height: 50px;
+  overflow-wrap: break-word;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/*** buttons ***/
+
+.form-button,
+.like-button {
+  border: none;
+  cursor: pointer;
+}
+
+.form-button {
+  display: block;
+  background-color: #F2ACAD;
+  margin-top: 15px;
+  padding: 10px 20px 12px;
+  border-radius: 25px;
+}
+
+.like-button {
+  background-color: #F2F0F0;
+  border-radius: 50%;
+  padding: 8px 11px 9px 12px;
+}
+
+.button-text {
+  font-family: Menlo;
+}
+
