@@ -30,7 +30,7 @@ export const App = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ text: messageNew })
+      body: JSON.stringify({ message: messageNew })
     }
 
     fetch(API_URL, options)
