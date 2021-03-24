@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const Form = props => {
-  const { messageNew, onSubmit, onChange } = props
+  const { onSubmit, value, onChange } = props
 
   return (
     <div className="form-container">
@@ -13,7 +13,7 @@ export const Form = props => {
           id="newMessage"
           type="text"
           // maxLength="140"
-          value={messageNew}
+          value={value}
           onChange={onChange}
         />
         <button type="submit" className="form-button">❤️ <span className="button-text">Send happy thought!</span> ❤️</button>
@@ -21,6 +21,3 @@ export const Form = props => {
     </div>
   )
 }
-
-
-

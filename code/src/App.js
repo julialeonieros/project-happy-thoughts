@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 
-import { API_URL } from 'utils/urls'
+import { API_URL, LIKES_URL } from 'utils/urls'
 import { Form } from 'Components/Form'
 import { Messages } from 'Components/Messages'
-
-// const apiHearts = `https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`
-// const id = 
 
 export const App = () => {
   const [messageList, setMessageList] = useState([])
   const [messageNew, setMessageNew] = useState('')
-  // const [likes, setLikes] = useState('')
 
   useEffect(() => {
     fetchMessageList()
@@ -24,7 +20,7 @@ export const App = () => {
       .catch(err => console.error(err))
   }
 
-  const onMessageNewChange = (event) => {
+  const handleMessageNewChange = (event) => {
     setMessageNew(event.target.value)
   }
 
@@ -41,61 +37,56 @@ export const App = () => {
 
     fetch(API_URL, options)
       .then(res => res.json())
-      .then(receivedMessage => setMessageList([...messageList, receivedMessage]))
+      .then(() => fetchMessageList)
+      // .then(receivedMessage => setMessageList([...messageList, receivedMessage]))
       .catch(err => console.error(err))
   }
 
-  // const onHeartClick = (event, id) => {
-  //   event.preventDefault()
+  const handleLikesIncrease = (id) => {
+    fetch(LIKES_URL(id))
 
-  //   fetch(apiHearts, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then(res => res.json())
-  //   .then(heart => setLikes([...likes, heart]))
-  //   .catch(err => console.error(err))
-  // }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
 
-
-
-  // const onHeartClick = (event, id) => {
-  //   event.preventDefault()
-  //   fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }})
-  //   .then(res => res.json())
-  //   .then(clickedLike => setLikes([...likes, clickedLike]))
-  //   }
+    fetch(LIKES_URL(id), options)
+      .then(res => res.json())
+      .then(receivedMessage => {
+        const updatedMessageList = messageList.map(message => {
+          if (message._id === receivedMessage._id) {
+            message.likes += 1
+          }
+          return message 
+        })
+        setMessageList(updatedMessageList)
+      })
+      .catch(err => console.error(err))
+  }
 
   return (
     <div>
       <Form 
         onSubmit={onFormSubmit}
-        onChange={onMessageNewChange}
+        value={messageNew}
+        onChange={handleMessageNewChange}
       />
-
       {messageList.map((message) => (
         <Messages 
           key={message._id}
           message={message.message}
           likes={(message.hearts)}
           date={moment(message.createdAt).fromNow()}
+          onClick={() => handleLikesIncrease(message._id)}
         />
       ))}
     </div>
     )}
 
-      {/* {messageList.map(message => (
-        <div className="messages-container" key={message._id}>
-          <p className="message-text-area">{message.message}</p>
-          <button>❤️</button>
-          {/* <button onClick={onHeartClick} type="submit" className="like-button">❤️</button> */}
-          {/* <p className="likes">x {(message.hearts)}</p>
-          <p className="date">- {moment(message.createdAt).fromNow()}</p>
-        </div>
-      ))} */}
+
+    {/* <button onClick={onHeartClick} type="submit" className="like-button">❤️</button> */}
+    {/* <button onClick={() => onHeartClick(message._id)} type="submit" className="like-button">❤️</button> */}
+
+    //if passed as props, handleMessageNewChange

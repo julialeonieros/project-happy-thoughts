@@ -1,13 +1,13 @@
 import React from 'react'
 
 export const Messages = props => {
-  const { message, likes, date } = props
+  const { message, onClick, likes, date } = props
 
   return (
     <div className="messages-container" >
       <p className="message-text-area">{message}</p>
-      <button type="submit" className="like-button">❤️</button>
-      {/* <button onClick={onHeartClick} type="submit" className="like-button">❤️</button> */}
+      {/* <button type="submit" className="like-button">❤️</button> */}
+      <button onClick={onClick} type="submit" className="like-button">❤️</button>
       <p className="likes">x {likes}</p>
       <p className="date">- {date}</p>
     </div>
