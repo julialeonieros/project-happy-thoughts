@@ -23,6 +23,10 @@ export const App = () => {
     setMessageNew(event.target.value)
   }
 
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
   const handleFormSubmit = (event) => {
     event.preventDefault()
 
@@ -39,10 +43,10 @@ export const App = () => {
       .then(() => fetchMessageList)
       // .then(receivedMessage => setMessageList([...messageList, receivedMessage]))
       .catch(err => console.error(err))
+      setTimeout(() => refreshPage(), 300)
   }
 
   const handleLikesIncrease = (id) => {
-    // fetch(LIKES_URL(id))
 
     const options = {
       method: 'POST',

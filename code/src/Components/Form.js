@@ -7,16 +7,19 @@ const Form = ({onSubmit, value, onChange}) => {
     <h1>What's making you happy right now?</h1>
       <form onSubmit={onSubmit}>
         <label htmlFor="newMessage"></label>
-        <input 
+        <textarea
           className="form-text-area"
           id="newMessage"
           type="text"
-          // maxLength="140"
           value={value}
-          onChange={onChange}
-        />
+          onChange={onChange}>
+        </textarea>
         <button type="submit" className="form-button">
-          <span role="img" aria-labelledby="submit">❤️</span><span className="button-text"> Send happy thought! </span><span role="img" aria-labelledby="submit">❤️</span>
+          <span role="img" aria-labelledby="Heart">❤️</span>
+          <span className="button-text"> 
+            Send happy thought! 
+          </span>
+          <span role="img" aria-labelledby="Heart">❤️</span>
         </button>
       </form>
     </div>
