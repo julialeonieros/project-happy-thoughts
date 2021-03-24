@@ -22,6 +22,12 @@ code {
 h1 {
   font-size: 13.5px;
   font-weight: 400;
+  margin: 2px 0 12px;
+}
+
+.main-container {
+  width: 400px;
+  margin: auto;
 }
 
 .likes,
@@ -38,7 +44,6 @@ h1 {
 
 .form-container,
 .messages-container {
-  width: 400px;
   margin: 30px auto;
   padding: 12px 17px;
   border: solid black 1px;
@@ -47,6 +52,7 @@ h1 {
 
 .form-container {
   height: 180px;
+  margin-bottom: 20px;
   background-color: #F2F0F0;
 }
 
@@ -55,6 +61,11 @@ h1 {
   height: 55px;
   border: solid darkgray 1px;
   font-family: Menlo;
+}
+
+.character-counter p {
+  margin: 0;
+  font-size: 14px;
 }
 
 .messages-container {
@@ -67,8 +78,6 @@ h1 {
   overflow: scroll;
   font-size: 15px;
 }
-
-/*** buttons ***/
 
 .form-button,
 .like-button {
@@ -85,7 +94,6 @@ h1 {
 }
 
 .like-button {
-  /* background-color: #F2F0F0; */
   border-radius: 50%;
   padding: 8px 11px 9px 12px;
 }
@@ -93,4 +101,3 @@ h1 {
 .button-text {
   font-family: Menlo;
 }
-
