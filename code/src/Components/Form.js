@@ -1,7 +1,6 @@
 import React from 'react'
 
-export const Form = props => {
-  const { onSubmit, value, onChange } = props
+const Form = ({onSubmit, value, onChange}) => {
 
   return (
     <div className="form-container">
@@ -16,8 +15,12 @@ export const Form = props => {
           value={value}
           onChange={onChange}
         />
-        <button type="submit" className="form-button">❤️ <span className="button-text">Send happy thought!</span> ❤️</button>
+        <button type="submit" className="form-button">
+          <span role="img" aria-labelledby="submit">❤️</span><span className="button-text"> Send happy thought! </span><span role="img" aria-labelledby="submit">❤️</span>
+        </button>
       </form>
     </div>
   )
 }
+
+export default Form

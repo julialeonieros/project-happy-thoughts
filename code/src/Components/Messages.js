@@ -1,23 +1,18 @@
 import React from 'react'
+import MessageElement from './MessageElement'
 
-export const Messages = props => {
-  const { message, onClick, likes, date } = props
+const Messages = ({ messageList, handleLikesIncrease }) => {
 
   return (
-    <div className="messages-container" >
-      <p className="message-text-area">{message}</p>
-      {/* <button type="submit" className="like-button">❤️</button> */}
-      <button onClick={onClick} type="submit" className="like-button">❤️</button>
-      <p className="likes">x {likes}</p>
-      <p className="date">- {date}</p>
-    </div>
-    
-    // <div className="messages-container" key={message._id}>
-    //   <p className="message-text-area">{message.message}</p>
-    //   <button>❤️</button>
-    //   {/* <button onClick={onHeartClick} type="submit" className="like-button">❤️</button> */}
-    //   <p className="likes">x {(message.hearts)}</p>
-    //   <p className="date">- {moment(message.createdAt).fromNow()}</p>
-    // </div>
+    <>
+      {messageList.map((message) => (
+        <MessageElement
+          key={message._id} 
+          message={message} 
+          onLikesIncrease={handleLikesIncrease}/>
+      ))}
+    </>
   )
 }
+
+export default Messages

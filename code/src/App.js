@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
 
 import { API_URL, LIKES_URL } from 'utils/urls'
-import { Form } from 'Components/Form'
-import { Messages } from 'Components/Messages'
+import Form from 'Components/Form'
+import Messages from 'Components/Messages'
 
 export const App = () => {
   const [messageList, setMessageList] = useState([])
@@ -24,7 +23,7 @@ export const App = () => {
     setMessageNew(event.target.value)
   }
 
-  const onFormSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault()
 
     const options = {
@@ -43,7 +42,7 @@ export const App = () => {
   }
 
   const handleLikesIncrease = (id) => {
-    fetch(LIKES_URL(id))
+    // fetch(LIKES_URL(id))
 
     const options = {
       method: 'POST',
@@ -54,39 +53,29 @@ export const App = () => {
 
     fetch(LIKES_URL(id), options)
       .then(res => res.json())
-      .then(receivedMessage => {
-        const updatedMessageList = messageList.map(message => {
-          if (message._id === receivedMessage._id) {
-            message.likes += 1
-          }
-          return message 
-        })
-        setMessageList(updatedMessageList)
-      })
+      // .then(receivedMessage => {
+      //   const updatedMessageList = messageList.map(message => {
+      //     if (message._id === receivedMessage._id) {
+      //       message.likes += 1
+      //     }
+      //     return message 
+      //   })
+      //   setMessageList(updatedMessageList)
+      // })
+      .then(() => fetchMessageList())
       .catch(err => console.error(err))
   }
 
   return (
     <div>
       <Form 
-        onSubmit={onFormSubmit}
+        onSubmit={handleFormSubmit}
         value={messageNew}
         onChange={handleMessageNewChange}
       />
-      {messageList.map((message) => (
-        <Messages 
-          key={message._id}
-          message={message.message}
-          likes={(message.hearts)}
-          date={moment(message.createdAt).fromNow()}
-          onClick={() => handleLikesIncrease(message._id)}
-        />
-      ))}
+      <Messages 
+        messageList={messageList}
+        handleLikesIncrease={handleLikesIncrease}
+      />
     </div>
     )}
-
-
-    {/* <button onClick={onHeartClick} type="submit" className="like-button">❤️</button> */}
-    {/* <button onClick={() => onHeartClick(message._id)} type="submit" className="like-button">❤️</button> */}
-
-    //if passed as props, handleMessageNewChange
