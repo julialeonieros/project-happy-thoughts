@@ -26,7 +26,7 @@ const Form = ({onSubmit, value, onChange}) => {
           </form>
         </div>
         <div className="character-counter">
-          <p style={{ color: value.length === 140 ? "#FF0000" : "#000" }}>Characters left: {(140-value.length)} 📝</p>
+          <p style={{ color: value.length > 134 ? "#FF0000" : "#000" }}>Characters left: {(140-value.length)} 📝</p>
         </div>
     </>
   )
