@@ -10,17 +10,21 @@ export const App = () => {
 
   useEffect(() => {
     fetchMessageList()
-  }, [messageNew])
+  }, [])
 
   const fetchMessageList = () => {
     fetch(API_URL)
-      .then(res => res.json())
+      .then(result => result.json())
       .then(messages => setMessageList(messages))
       .catch(err => console.error(err))
   }
 
   const handleMessageNewChange = (event) => {
     setMessageNew(event.target.value)
+  }
+
+  const refreshPage = () => {
+    window.location.reload()
   }
 
   const handleFormSubmit = (event) => {
@@ -35,9 +39,10 @@ export const App = () => {
     }
 
     fetch(API_URL, options)
-      .then(res => res.json())
+      .then(result => result.json())
       .then(() => fetchMessageList)
       .catch(err => console.error(err))
+      setTimeout(() => refreshPage(), 300)
   }
 
   const handleLikesIncrease = (id) => {
@@ -50,7 +55,7 @@ export const App = () => {
     }
 
     fetch(LIKES_URL(id), options)
-      .then(res => res.json())
+      .then(result => result.json())
       .then(() => fetchMessageList())
       .catch(err => console.error(err))
   }
@@ -67,5 +72,6 @@ export const App = () => {
         handleLikesIncrease={handleLikesIncrease}
       />
     </div>
-    )}
+  )
+}
     
