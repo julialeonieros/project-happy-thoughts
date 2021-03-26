@@ -16,7 +16,10 @@ const Form = ({onSubmit, value, onChange}) => {
               maxLength={140}
               onChange={onChange}>
             </textarea>
-            <button type="submit" className="form-button">
+            <button 
+              type="submit" 
+              className="form-button"
+              >
               <span role="img" aria-labelledby="Heart">❤️ </span>
               <span className="button-text"> 
                 Send happy thought! 
@@ -25,8 +28,8 @@ const Form = ({onSubmit, value, onChange}) => {
             </button>
           </form>
         </div>
-        <div className="character-counter">
-          <p style={{ color: value.length > 134 ? "#FF0000" : "#000" }}>Characters left: {(140-value.length)} 📝</p>
+        <div>
+          <p className={value.length > 134 ? "character-counter red" : "character-counter black" }>Characters left: {(140-value.length)} 📝</p>
         </div>
     </>
   )

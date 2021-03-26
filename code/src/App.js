@@ -16,7 +16,7 @@ export const App = () => {
     fetch(API_URL)
       .then(result => result.json())
       .then(messages => setMessageList(messages))
-      .catch(err => console.error(err))
+      .catch(error => console.error(error))
   }
 
   const handleMessageNewChange = (event) => {
@@ -40,8 +40,8 @@ export const App = () => {
 
     fetch(API_URL, options)
       .then(result => result.json())
-      .then(() => fetchMessageList)
-      .catch(err => console.error(err))
+      .then(receivedMessage => setMessageList([...messageList, receivedMessage]))
+      .catch(error => console.error(error))
       setTimeout(() => refreshPage(), 300)
   }
 
@@ -57,7 +57,7 @@ export const App = () => {
     fetch(LIKES_URL(id), options)
       .then(result => result.json())
       .then(() => fetchMessageList())
-      .catch(err => console.error(err))
+      .catch(error => console.error(error))
   }
 
   return (

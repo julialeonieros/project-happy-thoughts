@@ -58,14 +58,23 @@ h1 {
 
 .form-text-area {
   width: 100%;
+  resize: none;
   height: 55px;
   border: solid darkgray 1px;
   font-family: Menlo;
 }
 
-.character-counter p {
+.character-counter {
   margin: 0;
   font-size: 14px;
+}
+
+.red {
+  color: #FF0000;
+}
+
+.black {
+  color: #000;
 }
 
 .messages-container {
@@ -100,4 +109,12 @@ h1 {
 
 .button-text {
   font-family: Menlo;
+}
+
+.grey {
+  background-color: #F2F0F0;
+}
+
+.pink {
+  background-color: #F2ACAD;
 }

@@ -8,7 +8,7 @@ const Messages = ({ messageList, handleLikesIncrease }) => {
         <div className="messages-container" key={message._id}>
           <p className="message-text-area">{message.message}</p>
           <button onClick={() => handleLikesIncrease(message._id)} 
-          className="like-button" style={{ background: message.hearts > 0 ? "#F2ACAD" : "#F2F0F0" }}>
+          className={message.hearts > 0 ? 'like-button pink' : 'like-button grey'}>
             <span role="img" aria-label="Heart">
               ❤️
             </span>
