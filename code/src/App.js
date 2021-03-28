@@ -40,7 +40,7 @@ export const App = () => {
 
     fetch(API_URL, options)
       .then(result => result.json())
-      .then(receivedMessage => setMessageList([...messageList, receivedMessage]))
+      .then(() => fetchMessageList())
       .catch(error => console.error(error))
       setTimeout(() => refreshPage(), 300)
   }

@@ -21,9 +21,7 @@ const Form = ({onSubmit, value, onChange}) => {
               className="form-button"
               >
               <span role="img" aria-labelledby="Heart">❤️ </span>
-              <span className="button-text"> 
-                Send happy thought! 
-              </span>
+              <span className="button-text">Send happy thought!</span>
               <span role="img" aria-labelledby="Heart"> ❤️</span>
             </button>
           </form>
