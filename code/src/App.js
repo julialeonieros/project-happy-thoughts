@@ -23,11 +23,7 @@ export const App = () => {
     setMessageNew(event.target.value)
   }
 
-  const refreshPage = () => {
-    window.location.reload()
-  }
-
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = (event, value) => {
     event.preventDefault()
 
     const options = {
@@ -41,8 +37,7 @@ export const App = () => {
     fetch(API_URL, options)
       .then(result => result.json())
       .then(() => fetchMessageList())
-      .catch(error => console.error(error))
-      setTimeout(() => refreshPage(), 300)
+      setMessageNew('')
   }
 
   const handleLikesIncrease = (id) => {
@@ -57,7 +52,6 @@ export const App = () => {
     fetch(LIKES_URL(id), options)
       .then(result => result.json())
       .then(() => fetchMessageList())
-      .catch(error => console.error(error))
   }
 
   return (

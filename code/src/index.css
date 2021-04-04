@@ -26,7 +26,7 @@ h1 {
 }
 
 .main-container {
-  width: 400px;
+  width: 90%;
   margin: auto;
 }
 
@@ -44,7 +44,7 @@ h1 {
 
 .form-container,
 .messages-container {
-  margin: 30px auto;
+  margin-top: 30px;
   padding: 12px 17px;
   border: solid black 1px;
   box-shadow: 13px 13px 0px -5px #000000;
@@ -117,4 +117,11 @@ h1 {
 
 .pink {
   background-color: #F2ACAD;
+}
+
+@media (min-width: 767px) {
+  .main-container {
+    width: 340px;
+    margin: auto;
+  }
 }
