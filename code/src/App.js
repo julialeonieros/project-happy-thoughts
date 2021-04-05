@@ -16,7 +16,6 @@ export const App = () => {
     fetch(API_URL)
       .then(result => result.json())
       .then(messages => setMessageList(messages))
-      .catch(error => console.error(error))
   }
 
   const handleMessageNewChange = (event) => {
