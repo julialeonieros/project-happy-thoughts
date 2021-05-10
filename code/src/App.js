@@ -40,7 +40,6 @@ export const App = () => {
   }
 
   const handleLikesIncrease = (id) => {
-
     const options = {
       method: 'POST',
       headers: {

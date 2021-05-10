@@ -83,8 +83,8 @@ h1 {
 
 .message-text-area {
   height: 50px;
+  overflow: auto;
   overflow-wrap: break-word;
-  overflow: scroll;
   font-size: 15px;
 }
 
